@@ -4,7 +4,6 @@ import (
 	"container/heap"
 )
 
-
 type Interface interface {
 	HigherPriorityThan(Interface) bool
 }
@@ -38,6 +37,10 @@ func (pq *Queue) Pop() Interface {
 	}
 	r := heap.Pop(pq.queue)
 	return r.(Interface)
+}
+
+func (pq *Queue) Len() int {
+	return pq.queue.Len()
 }
 
 type heapMemory struct {
@@ -75,7 +78,7 @@ func (pq *heapMemory) Push(x interface{}) {
 func (pq *heapMemory) Pop() interface{} {
 	old, n := pq.shrinkIfNeeded()
 	item := (*old)[n-1]
-	pq.slice = (*old)[0: n-1]
+	pq.slice = (*old)[0 : n-1]
 	return item
 }
 
