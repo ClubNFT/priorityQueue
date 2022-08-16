@@ -5,7 +5,7 @@ import (
 )
 
 type Interface interface {
-	HigherPriorityThan(Interface) bool
+	CompareTo(Interface) bool
 }
 
 const shrinkMinCap = 1000
@@ -64,7 +64,7 @@ type internalSlice []Interface
 func (pq *heapMemory) Len() int { return len(pq.slice) }
 
 func (pq *heapMemory) Less(i, j int) bool {
-	return pq.slice[i].HigherPriorityThan(pq.slice[j])
+	return pq.slice[i].CompareTo(pq.slice[j])
 }
 
 func (pq *heapMemory) Swap(i, j int) {

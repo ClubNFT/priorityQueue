@@ -1,19 +1,18 @@
-package priorityQueue_test
+package priorityQueue
 
 import (
-	"github.com/x1m3/priorityQueue"
 	"fmt"
 )
 
 type Item int
 
-func (i Item) HigherPriorityThan(other priorityQueue.Interface) bool {
+func (i Item) CompareTo(other Interface) bool {
 	return i > other.(Item)
 }
 
 func ExampleSimple() {
 
-	list := priorityQueue.New()
+	list := New()
 	list.Push(Item(1))
 	list.Push(Item(10))
 	list.Push(Item(5))
@@ -27,7 +26,7 @@ func ExampleSimple() {
 
 	for {
 		r := list.Pop()
-		if r==nil {
+		if r == nil {
 			break
 		}
 		fmt.Println(r)

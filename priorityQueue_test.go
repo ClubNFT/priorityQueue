@@ -1,10 +1,10 @@
 package priorityQueue
 
 import (
-	"testing"
 	"fmt"
-	"math/rand"
 	"math"
+	"math/rand"
+	"testing"
 )
 
 type Something struct {
@@ -12,7 +12,7 @@ type Something struct {
 	priority int
 }
 
-func (x *Something) HigherPriorityThan(o Interface) bool {
+func (x *Something) CompareTo(o Interface) bool {
 	return x.priority > o.(*Something).priority
 }
 
